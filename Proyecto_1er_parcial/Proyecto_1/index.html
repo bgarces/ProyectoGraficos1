@@ -146,20 +146,46 @@ scene.add( torus );
         var controls = new function() {
             this.rotationSpeed = 0.02;
             this.bouncingSpeed = 0.03;
+            this.RotacionCuboEjeY = false;
+            this.RotacionCuboEjeX = true;
+            this.RotacionTorusEjeY = false;
+            this.RotacionTorusEjeX = true;
+            //this.message="pizza";
         }
 
         var gui = new DAT.GUI();
         gui.add(controls, 'rotationSpeed',0,0.5);
         gui.add(controls, 'bouncingSpeed',0,0.5);
+        gui.add(controls,'RotacionCuboEjeY');
+        gui.add(controls,'RotacionCuboEjeX');
+        gui.add(controls,'RotacionTorusEjeY');
+        gui.add(controls,'RotacionTorusEjeX');
+        
 
         render();
 
         function render() {
             stats.update();
             // rotate the cube around its axes
-            cube.rotation.x += controls.rotationSpeed;
-            cube.rotation.y += controls.rotationSpeed;
-            cube.rotation.z += controls.rotationSpeed;
+            if (controls.RotacionCuboEjeY) {
+                cube.rotation.y += controls.rotationSpeed;
+                controls.RotacionCuboEjeX=false;
+            }else if (controls.RotacionCuboEjeX) {
+                 cube.rotation.x += controls.rotationSpeed;
+                 controls.RotacionCuboEjeY=false;
+            }
+           
+           if (controls.RotacionTorusEjeY) {
+                torus.rotation.y += controls.rotationSpeed;
+                controls.RotacionTorusEjeX=false;
+            }else if (controls.RotacionTorusEjeX) {
+                 torus.rotation.x += controls.rotationSpeed;
+                 controls.RotacionTorusEjeY=false;
+            }
+
+            //torus.rotation.x += controls.rotationSpeed;
+            //torus.rotation.y += controls.rotationSpeed;
+            //torus.rotation.z += controls.rotationSpeed;
 
             // bounce the sphere up and down
             step+=controls.bouncingSpeed;
