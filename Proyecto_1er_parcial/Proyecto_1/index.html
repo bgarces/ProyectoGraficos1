@@ -163,6 +163,7 @@
             this.RotacionCuboEjeX = true;
             this.RotacionTorusEjeY = false;
             this.RotacionTorusEjeX = true;
+			this.radioEsfera = 1;
             //this.message="pizza";
         }
 
@@ -173,7 +174,7 @@
         gui.add(controls,'RotacionCuboEjeX');
         gui.add(controls,'RotacionTorusEjeY');
         gui.add(controls,'RotacionTorusEjeX');
-        
+        gui.add(controls, 'radioEsfera',0.2,2);
 
         render();
 
@@ -200,9 +201,11 @@
                  controls.RotacionTorusEjeY=false;
             }
 
-            //torus.rotation.x += controls.rotationSpeed;
-            //torus.rotation.y += controls.rotationSpeed;
-            //torus.rotation.z += controls.rotationSpeed;
+            //cambio del radio de la esfera
+			sphere.geometry.radius =controls.radioEsfera;
+			sphere.scale.x = controls.radioEsfera;
+			sphere.scale.y = controls.radioEsfera;
+			sphere.scale.z = controls.radioEsfera;
 
             // bounce the sphere up and down
             step+=controls.bouncingSpeed;
