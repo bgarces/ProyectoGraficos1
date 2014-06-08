@@ -9,6 +9,7 @@
     <!-- Bootstrap -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../bootstrap/css/mycss.css" rel="stylesheet">
+    <link href="../bootstrap/css/prettify.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -59,12 +60,20 @@
           <h4>
           Contenido
           <br>
+<<<<<<< HEAD
           <small class="text-primary">Introducci&oacute;n a Tree.js<span class="caret"></span></small>
+=======
+          <small class="text-primary">Recursos y Fuentes<span class="caret"></span></small>
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
           </h4>
           </a>
           <div class="collapse" id="toggleDemo0" style="height: 0px;">
             <ul class="nav nav-list">
+<<<<<<< HEAD
               <li><a href="#" id="btn_recursos">Resursos usados</a></li>
+=======
+              <li><a href="#" id="btn_recursos">Resursos</a></li>
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
               <li><a href="#" id="btn_fuentes">Fuentes</a></li>
             </ul>
           </div>
@@ -267,19 +276,31 @@
           <div class="col-sm-6 col-md-4">
             <div class="well">
               <div id="cubo_opengl"></div>
+<<<<<<< HEAD
+=======
               <div class="caption">
                 <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
               </div>
             </div>
           </div>
-          <div class="col-md-8">
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+          <div class="col-md-8 text-justify">
+            <p>Para crear un cubo con Three.js, usamos la clase CubeGeometry en donde especificamos el tama&ntilde;o. Despu&eacute;s creamos el material con el con el cual construiremos el cubo.</p>
+            <p>Una vez creados los objetos anteriores procedemos a crear nuestro contenedor donde establecemos los objectos para crear el cubo, en este caso el objeto con las dimensiones y el objeto con el material. Sin olvidar agregarlo a la escena en una respectiva ubicaci&oacute;n.</p>
+            <pre class="prettyprint">
+            // crear el cubo
+            var cubeGeometry = new THREE.CubeGeometry(4,4,4);
+            var cubeMaterial = new THREE.MeshLambertMaterial({color: 0xff0000});
+            var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
+            cube.castShadow = true;
+
+            // posicionando al cubo
+            cube.position.x=-4;
+            cube.position.y=3;
+            cube.position.z=0;
+
+            // agregando el cubo a la escena
+            scene.add(cube);
+            </pre>
           </div>
         </div>
       </div>
@@ -298,13 +319,18 @@
             </div>
           </div>
           <div class="col-md-8">
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Para la animaci&oacute;n de una objecto creado en Three.js es necesario escribir dicha funcionalidad dentro de una funci&oacute;n ya que esta se repetir&aacute; varias veces.</p>
+            <p>El objecto cubo creado anteriormente nos permite acceder a los parametros de rotaci&oacute;n de cada eje, dicho esto podemos establecer su movimiento.</p>
+            <pre class="prettyprint">
+              function render_cubo_a() {
+                // asigando ubicacion en el eje y
+                cube.rotation.y += 0.02;
+                // render usando requestAnimationFrame
+                // esta funcion se ejecutara varias veces
+                renderer.render(scene, camera);
+                requestAnimationFrame(render_cubo_a); 
+              }
+            </pre>
           </div>
         </div>
       </div>
@@ -317,6 +343,7 @@
           <div class="col-sm-6 col-md-4">
             <div class="well">
               <div id="piramide_opengl"></div>
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
               <div class="caption">
                 <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
               </div>
@@ -341,7 +368,11 @@
         <div class="row">
           <div class="col-sm-6 col-md-4">
             <div class="well">
+<<<<<<< HEAD
+              <div id="cubo_opengl_a"></div>
+=======
               <div id="piramide_opengl_a"></div>
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
               <div class="caption">
                 <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
               </div>
@@ -359,6 +390,66 @@
         </div>
       </div>
 
+      <div class="container" id="esfera_1"><!--Piramide-->
+      
+        <div class="page-header">
+          <h3><span class="glyphicon glyphicon-th-list"></span> Esfera - Creaci&oacute;n</h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="well">
+<<<<<<< HEAD
+              <div id="piramide_opengl"></div>
+=======
+              <div id="esfera_opengl"></div>
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
+              <div class="caption">
+                <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="esfera_2"><!--Piramide-->
+      
+        <div class="page-header">
+          <h3><span class="glyphicon glyphicon-th-list"></span> Esfera - Animaci&oacute;n</h3>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-4">
+            <div class="well">
+<<<<<<< HEAD
+              <div id="piramide_opengl_a"></div>
+=======
+              <div id="esfera_opengl_a"></div>
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
+              <div class="caption">
+                <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-8">
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+          </div>
+        </div>
+      </div>
+
+<<<<<<< HEAD
       <div class="container" id="esfera_1"><!--Piramide-->
       
         <div class="page-header">
@@ -410,6 +501,8 @@
         </div>
       </div>
 
+=======
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
       <div class="container" id="toroide_1"><!--Toroide-->
       
         <div class="page-header">
@@ -465,8 +558,13 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../src_tree/three.min.js"></script>
+    <script src="../google-code-prettify/prettify.js"></script>
     <script type="text/javascript">
       $(function () {
+<<<<<<< HEAD
+=======
+        prettyPrint();
+>>>>>>> 04177836745c01df141fca5ebcf8441e529c9b32
         presentacion();
         $("#menu_lateral").hide();
         $("#menu_lateral").show("slow");
