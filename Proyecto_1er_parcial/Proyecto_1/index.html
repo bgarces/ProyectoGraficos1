@@ -111,14 +111,15 @@
         // add the sphere to the scene
         scene.add(sphere);
 
+        //creacion del Toroide
         var geometry = new THREE.TorusGeometry( 4, 2, 10, 25 );
 		var material = new THREE.MeshLambertMaterial( { color: 0xffff00 } );
 		var torus = new THREE.Mesh( geometry, material );
-		//torus.rotation.x=-0.55*Math.PI;
+		//posicionamiento del toroide
 		torus.position.x=30;
 		torus.position.y=5;
 		torus.position.z=-15;
-		//torus.castShadow=true;
+		torus.castShadow=true;
 		scene.add( torus );
 		
 		var piramideGeometria = new THREE.CylinderGeometry(0,3, 10, 4, 4, true);
