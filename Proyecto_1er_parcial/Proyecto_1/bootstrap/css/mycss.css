@@ -20,7 +20,7 @@ body {
 #menu .navbar-default{
   background-color: #007AFF;
   height: 10%;
-  width: 100%;
+  width: 50%;
   
 }
 #menu .navbar-default .navbar-brand{
@@ -41,12 +41,4 @@ body {
 .myfooter{
   padding: 1%;
   color: #353636;
-}
-#guidat{
-  position: absolute;
-  margin-left: 0px;
-  margin-top: 5%;
-}
-canvas{
-  margin-top: 80px;
 }
