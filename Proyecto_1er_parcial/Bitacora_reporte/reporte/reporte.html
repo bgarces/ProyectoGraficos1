@@ -65,7 +65,7 @@
           </a>
           <div class="collapse" id="toggleDemo0" style="height: 0px;">
             <ul class="nav nav-list">
-              <li><a href="#" id="btn_recursos">Resursos</a></li>
+              <li><a href="#" id="btn_recursos">Recursos</a></li>
               <li><a href="#" id="btn_fuentes">Fuentes</a></li>
             </ul>
           </div>
@@ -184,7 +184,11 @@
               <a href="http://www.genbetadev.com/javascript/introduccion-a-three-js-la-libreria-3d-numero-uno-para-html5" class="list-group-item" target="_blank">
                 <h4 class="list-group-item-heading"><span class="text-primary">genbetadev</span></h4>
               </a>
-            </div>
+			  
+              <a href="http://stackoverflow.com/questions/11555783/mutually-exclusive-checkbox-using-dat-gui-js-api" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">stackoverflow</span></h4>
+              </a>
+			</div>
           </div>
         </div>
       </div>
@@ -250,7 +254,7 @@
                 var renderer_c = new THREE.WebGLRenderer({ alpha: true });
                 renderer_c.setSize(canvasWidth, canvasHeight);
                 renderer_c.shadowMapEnabled = true;
-                // se envia los parametros necesarios para la creacion de un objeto
+                // se envia los par&aacute;metros necesarios para la creaci&oacute;n de un objeto
                 creacion_cubo(scene_cube,camera,renderer_c);
               }
             </pre>
@@ -302,19 +306,19 @@
             <div class="well">
               <div id="cubo_opengl_a"></div>
               <div class="caption">
-                <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
+                <p class="text-center  text-primary"><strong>Cubo Animado</strong></p>
               </div>
             </div>
           </div>
           <div class="col-md-8">
             <p>Para la animaci&oacute;n de una objecto creado en Three.js es necesario escribir dicha funcionalidad dentro de una funci&oacute;n ya que esta se repetir&aacute; varias veces.</p>
-            <p>El objecto cubo creado anteriormente nos permite acceder a los parametros de rotaci&oacute;n de cada eje, dicho esto podemos establecer su movimiento.</p>
+            <p>El objecto cubo creado anteriormente nos permite acceder a los par&aacute;metros de rotaci&oacute;n de cada eje, dicho esto podemos establecer su movimiento.</p>
             <pre class="prettyprint">
               function render_cubo_a() {
                 // asigando ubicacion en el eje y
                 cube.rotation.y += 0.02;
                 // render usando requestAnimationFrame
-                // esta funcion se ejecutara varias veces
+                // esta funci&oacute;n se ejecutar&aacute; varias veces
                 renderer.render(scene, camera);
                 requestAnimationFrame(render_cubo_a); 
               }
@@ -325,14 +329,14 @@
       <div class="container" id="piramide_1"><!--Piramide-->
       
         <div class="page-header">
-          <h3><span class="glyphicon glyphicon-th-list"></span> Piramide - Creaci&oacute;n</h3>
+          <h3><span class="glyphicon glyphicon-th-list"></span> Pir&aacute;mide - Creaci&oacute;n</h3>
         </div>
         <div class="row">
           <div class="col-sm-6 col-md-4">
             <div class="well">
               <div id="piramide_opengl"></div>
               <div class="caption">
-                <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
+                <p class="text-center  text-primary"><strong>Imagen Pirámide</strong></p>
               </div>
             </div>
           </div>
@@ -350,14 +354,14 @@
       <div class="container" id="piramide_2"><!--Piramide-->
       
         <div class="page-header">
-          <h3><span class="glyphicon glyphicon-th-list"></span> Piramide - Animaci&oacute;n</h3>
+          <h3><span class="glyphicon glyphicon-th-list"></span> Pir&aacute;mide - Animaci&oacute;n</h3>
         </div>
         <div class="row">
           <div class="col-sm-6 col-md-4">
             <div class="well">
               <div id="piramide_opengl_a"></div>
               <div class="caption">
-                <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
+                <p class="text-center  text-primary"><strong>Pir&aacute;mide Animada</strong></p>
               </div>
             </div>
           </div>
@@ -383,22 +387,32 @@
             <div class="well">
               <div id="esfera_opengl"></div>
               <div class="caption">
-                <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
+                <p class="text-center  text-primary"><strong>Imagen Esfera</strong></p>
               </div>
             </div>
           </div>
-          <div class="col-md-8">
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+           <div class="col-md-8 text-justify">
+            <p>Para crear una esfera con Three.js, usamos la clase SphereGeometry en donde especificamos el tama&ntilde;o del radio, n&uacute;mero de segmentos verticales y el n&uacute;mero de segmentos horizontales. Despu&eacute;s creamos el material con el con el cual construiremos la esfera.</p>
+            <p>Una vez creados los objetos anteriores procedemos a crear nuestro contenedor donde establecemos los objectos para crear la esfera, en este caso el objeto con las dimensiones y el objeto con el material. Sin olvidar agregarlo a la escena en una respectiva ubicaci&oacute;n.</p>
+            <pre class="prettyprint">
+	//crear la esfera
+	var sphereGeometry = new THREE.SphereGeometry(4,20,20);
+	var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff});
+	var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
+	
+	// posicionando la esfera
+	sphere.position.x=10;
+	sphere.position.y=0;
+	sphere.position.z=2;
+	sphere.castShadow=true;
+	
+	// agregar la esfera a la escena
+	scene.add(sphere);
+            </pre>
           </div>
         </div>
-      </div>
-      <div class="container" id="esfera_2"><!--Piramide-->
+        </div>
+      <div class="container" id="esfera_2"><!--Esfera-->
       
         <div class="page-header">
           <h3><span class="glyphicon glyphicon-th-list"></span> Esfera - Animaci&oacute;n</h3>
@@ -408,18 +422,34 @@
             <div class="well">
               <div id="esfera_opengl_a"></div>
               <div class="caption">
-                <p class="text-center  text-primary"><strong>Imagen cubo</strong></p>
+                <p class="text-center  text-primary"><strong>Esfera Animada</strong></p>
               </div>
             </div>
           </div>
-          <div class="col-md-8">
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+          <div class="col-md-8 text-justify">
+            <p>AL igual que el cubo es necesario escribir dicha funcionalidad dentro de una funci&oacute;n que se repetir&aacute; varias veces.</p>
+            <p>El objecto cubo creado anteriormente nos permite acceder a los parametros de posici&oacute;n para las coordenadas, dicho esto podemos establecer su movimiento mediante una funci&oacute;n seno y coseno para dar el efecto de desplazamiento.</p>
+            <p>El objecto tambi&eacute;n nos permite acceder a los par&aacute;metros de radio y escala, con esto podemos establecer el cambio es su tamaño.</p>
+            
+			<pre class="prettyprint">
+	function render_esfera() {
+	//cambio del radio de la esfera para modificar su tamaño
+	tam+=0.025;
+	sphere.geometry.radius = Math.abs(Math.sin(tam));
+	sphere.scale.x = Math.abs(Math.sin(tam));
+	sphere.scale.y = Math.abs(Math.sin(tam));
+	sphere.scale.z = Math.abs(Math.sin(tam));
+	  
+	//se modifican los valores de x,y para dar el efecto de salto y desplazamiento
+	step+=0.1;
+	sphere.position.x =0;
+	sphere.position.y =4*Math.sin(step);
+			
+	// render usando requestAnimationFrame, esta funci&oacute;n se ejecutar&aacute; varias veces
+	renderer.render(scene, camera);
+	requestAnimationFrame(render_esfera); 
+  }
+            </pre>
           </div>
         </div>
       </div>
@@ -439,7 +469,7 @@
             </div>
           </div>
           <div class="col-md-8">
-            <p>El toroide fue creado por medio de la funci&oacute;n TorusGeometry dandole los valores de los radios y diametros. La función de MeshLamberMaterial que le da una una superficie no brillante.  Y se lo agrega con la función Mesh dandole la geometria y el material. Luego se le d una posición al objeto y se lo agrega a la escena. con position y add respectivamente.</p>
+            <p>El toroide fu&eacute; creado por medio de la funci&oacute;n TorusGeometry dandole los valores de los radios y diametros. La función de MeshLamberMaterial que le da una una superficie no brillante.  Y se lo agrega con la función Mesh dandole la geometria y el material. Luego se le d una posición al objeto y se lo agrega a la escena. con position y add respectivamente.</p>
           </div>
         </div>
       </div>
@@ -605,6 +635,7 @@
 
           // add the sphere to the scene
           var step=0;
+		  var tam=0;
           scene.add(sphere);
 
           if (opt_animation==0) {
@@ -617,6 +648,13 @@
           };
           function render_esfera_a(){
             step+=0.1;
+			tam+=0.025;
+			
+			sphere.geometry.radius = Math.abs(Math.sin(tam));
+			sphere.scale.x = Math.abs(Math.sin(tam));
+			sphere.scale.y = Math.abs(Math.sin(tam));
+			sphere.scale.z = Math.abs(Math.sin(tam));
+	
             sphere.position.x =0;
             sphere.position.y =4*Math.sin(step);
             renderer.render(scene, camera);
