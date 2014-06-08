@@ -106,7 +106,7 @@
         </li>
         <li>
           <a href="#" data-toggle="collapse" data-target="#toggleDemo4" data-parent="#sidenav01" class="collapsed">
-          <span class="glyphicon glyphicon-chevron-down"></span> Pir&aacute;mede <span class="caret pull-right"></span>
+          <span class="glyphicon glyphicon-chevron-down"></span> Pir&aacute;mide <span class="caret pull-right"></span>
           </a>
           <div class="collapse" id="toggleDemo4" style="height: 0px;">
             <ul class="nav nav-list">
@@ -336,18 +336,54 @@
             <div class="well">
               <div id="piramide_opengl"></div>
               <div class="caption">
+<<<<<<< HEAD
                 <p class="text-center  text-primary"><strong>Imagen Pirámide</strong></p>
+=======
+                <p class="text-center  text-primary"><strong>Pir&aacute;mide</strong></p>
+>>>>>>> 71fb08488f56913700ff447668f35ff9f6984960
               </div>
             </div>
           </div>
           <div class="col-md-8">
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>La pir&aacute;mide fue creada con el objeto CylinderGeametry con variaciones de sus par&acute;metros para que de apariencia de pir&aacute;mide, se establece el radio de inferior y superior as&iacute; como la cantidad de "caras" que se deben graficar horizontal y verticalmente.</p>
+            <p>Para darle el color degradado como se ve en la imagen se le dio color a cada cara a travez de su propiedad vetexColor.</p>
+            <p>Luego de creado el objeto final con la funci&oacute;n Mesh, se procede a darle un lugar a trav&eacute;s de la propiedades de posici&oacute;n y se lo agrega a la escena.</p>
+            <pre class="prettyprint">
+     //Material con el que se grafica la pirámide
+      var piramideMaterial = new THREE.MeshBasicMaterial({
+        vertexColors:THREE.VertexColors,
+        side:THREE.DoubleSide
+      });
+      //Creación del cilindro con forma de pirámide
+      var piramideGeometria = new THREE.CylinderGeometry(0,18, 40, 4, 1, true);
+      //colore de cada cara de la pirámide
+      for(i = 0; i < piramideGeometria.faces.length; i++){
+        if(piramideGeometria.faces[i] instanceof THREE.Face4){
+          piramideGeometria.faces[i].vertexColors[0] = new THREE.Color(0xFF0000);
+          if((i % 2) == 0){
+            piramideGeometria.faces[i].vertexColors[1] = new THREE.Color(0x00FF00);
+            piramideGeometria.faces[i].vertexColors[2] = new THREE.Color(0x0000FF);
+          } else {
+            piramideGeometria.faces[i].vertexColors[1] = new THREE.Color(0x0000FF);
+            piramideGeometria.faces[i].vertexColors[2] = new THREE.Color(0x00FF00);
+          }
+          piramideGeometria.faces[i].vertexColors[3] = new THREE.Color(0xFF0000);
+        } else {
+          piramideGeometria.faces[i].vertexColors[0] = new THREE.Color(0xFF0000);
+          piramideGeometria.faces[i].vertexColors[1] = new THREE.Color(0x00FF00);
+          piramideGeometria.faces[i].vertexColors[2] = new THREE.Color(0x0000FF);
+        }
+      }
+      //Contenedor de la pirámide 
+      var piramide = new THREE.Mesh(piramideGeometria, piramideMaterial);
+      piramide.position.x=0;
+      piramide.position.y=4;
+      piramide.position.z=0;
+      //agrarlo a la escena
+      scene.add(piramide);
+
+
+            </pre>
           </div>
         </div>
       </div>
@@ -366,13 +402,16 @@
             </div>
           </div>
           <div class="col-md-8">
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
-            <p>Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto Texto</p>
+            <p>Por medio de una funci&oacute;n render en donde se actualliza la posici&oacute;n de con respecto al eje de rotaci&oacute;n que tiene cada objeto.</p>
+            <pre class="prettyprint" >
+              //función que renderiza
+              function render_piramide_a(){
+              //actualización de la posición de rotación
+                piramide.rotation.y+=0.02;
+                renderer.render(scene, camera);
+                requestAnimationFrame(render_piramide_a);
+              }
+            </pre>
           </div>
         </div>
       </div>
@@ -469,7 +508,23 @@
             </div>
           </div>
           <div class="col-md-8">
+<<<<<<< HEAD
             <p>El toroide fu&eacute; creado por medio de la funci&oacute;n TorusGeometry dandole los valores de los radios y diametros. La función de MeshLamberMaterial que le da una una superficie no brillante.  Y se lo agrega con la función Mesh dandole la geometria y el material. Luego se le d una posición al objeto y se lo agrega a la escena. con position y add respectivamente.</p>
+=======
+            <p>El toroide fue creado por medio de la clase TorusGeometry dandole los valores de los radios y diametros de la fugura y el objeto MeshLamberMaterial que le da una una superficie no brillante.  Se lo agrega a la clase conotendora (Mesh), dandole la geometria y el material. Luego se le da una posici&oactue;n al objeto y se lo agrega a la escena con "position" y "add" respectivamente.</p>
+            <pre class="prettyprint">
+                //creando el cubo
+                var geometry = new THREE.TorusGeometry( 8, 4, 20, 50 );
+                var material = new THREE.MeshLambertMaterial( { color: 0xffff00 } );
+                var torus = new THREE.Mesh( geometry, material );
+                //posicionamiento del toroide
+                torus.position.x=0;
+                torus.position.y=0;
+                torus.position.z=0;
+                //se lo agrega a la escena
+                scene.add( torus );
+              </pre>
+>>>>>>> 71fb08488f56913700ff447668f35ff9f6984960
           </div>
         </div>
       </div>
@@ -488,7 +543,17 @@
             </div>
           </div>
           <div class="col-md-8">
-            <p>La rotaci&oacute;n del toriode fue dada por la actualizaci&oacute;n la funcion de rotaci&oacute;n en la funci&oacute;n render. El movimiento del toroide puede ser sobre su eje vertical y horizontal, y esta especificaci&oacute;n es a trav&eacute;s de los controles en el &aacute;rea del Gui Data</p>
+            <p>La rotaci&oacute;n del toriode fue dada por la funci&oacute;n que renderiza la figura aumentando cada vez que se la llama sus propiedad de rotaci&oacute;n. El movimiento del toroide puede ser sobre su eje vertical y horizontal, y esta especificaci&oacute;n se da a trav&eacute;s de los controles en el &aacute;rea del Gui Data</p>
+            <pre class="prettyprint" >
+              function render_toroide_a(){
+              //asiganción de los calores en el eje que queremos que se mueva
+                torus.rotation.x += 0.02;
+                torus.rotation.y = 0;
+                torus.rotation.z = 0;
+                renderer.render(scene, camera);
+                requestAnimationFrame(render_toroide_a);
+              }
+            </pre>
           </div>
         </div>
       </div>
