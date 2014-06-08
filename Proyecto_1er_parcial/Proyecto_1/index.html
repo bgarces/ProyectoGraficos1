@@ -4,7 +4,11 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+<<<<<<< HEAD
     <title>Proyecto</title>
+=======
+    <title>Proyecto Three.js</title>
+>>>>>>> 9df14b83a1e225e4aa6a3e8320dc408aaedc417d
 
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -108,6 +112,7 @@
         // add the sphere to the scene
         scene.add(sphere);
 
+<<<<<<< HEAD
 		//create a torus
         var geometry = new THREE.TorusGeometry( 4, 2, 10, 25 );
 		var material = new THREE.MeshLambertMaterial( { color: 0xffff00 } );
@@ -119,6 +124,18 @@
 		toroide.castShadow=true;
 		// add the torus to the scene
 		scene.add( toroide );
+=======
+        //creacion del Toroide
+        var geometry = new THREE.TorusGeometry( 4, 2, 10, 25 );
+		var material = new THREE.MeshLambertMaterial( { color: 0xffff00 } );
+		var torus = new THREE.Mesh( geometry, material );
+		//posicionamiento del toroide
+		torus.position.x=30;
+		torus.position.y=5;
+		torus.position.z=-15;
+		torus.castShadow=true;
+		scene.add( torus );
+>>>>>>> 9df14b83a1e225e4aa6a3e8320dc408aaedc417d
 		
 		//create a pyramid
 		var piramideGeometria = new THREE.CylinderGeometry(0,3, 10, 4, 4, true);
