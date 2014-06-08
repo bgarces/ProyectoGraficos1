@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Proyecto GHUYGYUgdfggdgg</title>
+    <title>Proyecto</title>
 
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -89,38 +89,38 @@
         var cubeMaterial = new THREE.MeshLambertMaterial({color: 0xff0000});
         var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
         cube.castShadow = true;
-
         // position the cube
         cube.position.x=-4;
         cube.position.y=3;
-        cube.position.z=0;
-
+        cube.position.z=-7;
         // add the cube to the scene
         scene.add(cube);
 
+		//create a sphere
         var sphereGeometry = new THREE.SphereGeometry(4,20,20);
         var sphereMaterial = new THREE.MeshLambertMaterial({color: 0x7777ff});
         var sphere = new THREE.Mesh(sphereGeometry,sphereMaterial);
-
         // position the sphere
-        sphere.position.x=20;
+        sphere.position.x=10;
         sphere.position.y=0;
         sphere.position.z=2;
         sphere.castShadow=true;
-
         // add the sphere to the scene
         scene.add(sphere);
 
+		//create a torus
         var geometry = new THREE.TorusGeometry( 4, 2, 10, 25 );
 		var material = new THREE.MeshLambertMaterial( { color: 0xffff00 } );
-		var torus = new THREE.Mesh( geometry, material );
-		//torus.rotation.x=-0.55*Math.PI;
-		torus.position.x=30;
-		torus.position.y=5;
-		torus.position.z=-15;
-		//torus.castShadow=true;
-		scene.add( torus );
+		var toroide = new THREE.Mesh( geometry, material );
+		//position the torus
+		toroide.position.x=30;
+		toroide.position.y=5;
+		toroide.position.z=-15;
+		toroide.castShadow=true;
+		// add the torus to the scene
+		scene.add( toroide );
 		
+		//create a pyramid
 		var piramideGeometria = new THREE.CylinderGeometry(0,3, 10, 4, 4, true);
 		var piramideMaterial = new THREE.MeshLambertMaterial( { color: 0x20E9C4} );
 		for(i = 0; i < piramideGeometria.faces.length; i++){
@@ -128,10 +128,13 @@
 				piramideGeometria.faces[i].vertexColors[1] = new THREE.Color(0xE9DE20);
 				piramideGeometria.faces[i].vertexColors[2] = new THREE.Color(0xE9DE20);
 		}
+		//position the pyramid
 		var piramide = new THREE.Mesh(piramideGeometria, piramideMaterial);
 		piramide.position.x=-10;
-		piramide.position.y=9;
-		piramide.position.z=18;
+		piramide.position.y=10;
+		piramide.position.z=16;
+		piramide.castShadow=true;
+		//add the pyramid to the scene
 		scene.add(piramide);
 
         // position and point the camera to the center of the scene
@@ -159,46 +162,89 @@
         var controls = new function() {
             this.rotationSpeed = 0.02;
             this.bouncingSpeed = 0.03;
-            this.RotacionCuboEjeY = false;
-            this.RotacionCuboEjeX = true;
-            this.RotacionTorusEjeY = false;
-            this.RotacionTorusEjeX = true;
 			this.radioEsfera = 1;
+			this.distanciaRebote = 1;
             //this.message="pizza";
         }
-
+		
+		//creacion de vista para los checkbox
+		var view = this;
+		view.RotacionCuboEjeX = true;
+		view.RotacionCuboEjeY = false;
+		view.RotacionToroideEjeX = true;
+		view.RotacionToroideEjeY = false;
+		
+		//variables para controlar los ejes de rotacion del cubo y el toroide
+		var ejeCubo = "x";
+		var ejeToroide = "x";
+		
+		//uso de la libreria dat.gui para los controles de velocidad, rotacion, salto y tamaño de las figuras
         var gui = new DAT.GUI();
+		//Añadimos los controles y las vistas
         gui.add(controls, 'rotationSpeed',0,0.5);
         gui.add(controls, 'bouncingSpeed',0,0.5);
-        gui.add(controls,'RotacionCuboEjeY');
-        gui.add(controls,'RotacionCuboEjeX');
-        gui.add(controls,'RotacionTorusEjeY');
-        gui.add(controls,'RotacionTorusEjeX');
-        gui.add(controls, 'radioEsfera',0.2,2);
+		gui.add(controls, 'radioEsfera',0.2,2);
+		gui.add(controls, 'distanciaRebote',0,2);
+		//Le agregamos el listen para el evento a los checkbox
+		var controlCheckBox3 = gui.add(view,'RotacionToroideEjeX').listen();
+        var controlCheckBox4 = gui.add(view,'RotacionToroideEjeY').listen();
+        var controlCheckBox1 = gui.add(view,'RotacionCuboEjeX').listen();
+        var controlCheckBox2 = gui.add(view,'RotacionCuboEjeY').listen();
+        
 
+		//evento para deseleccionar el checkbox cuando se selecciona otro
+		controlCheckBox1.onChange(function(value){
+				view.RotacionCuboEjeY=false;
+				view.RotacionCuboEjeX=true;
+				ejeCubo = "x";
+		});
+		
+		//evento para deseleccionar el checkbox cuando se selecciona otro
+		controlCheckBox2.onChange(function(value){
+				view.RotacionCuboEjeY=true;
+				view.RotacionCuboEjeX=false;
+				ejeCubo = "y";
+		});
+		
+		//evento para deseleccionar el checkbox cuando se selecciona otro
+		controlCheckBox3.onChange(function(value){
+				view.RotacionToroideEjeY=false;
+				view.RotacionToroideEjeX=true;
+				ejeToroide = "x";
+		});
+		
+		//evento para deseleccionar el checkbox cuando se selecciona otro
+		controlCheckBox4.onChange(function(value){
+				view.RotacionToroideEjeY=true;
+				view.RotacionToroideEjeX=false;
+				ejeToroide = "y";
+		});
+		
         render();
 
         function render() {
             stats.update();
-            // rotate the cube around its axes
-            if (controls.RotacionCuboEjeY) {
-                cube.rotation.y += controls.rotationSpeed;
-                controls.RotacionCuboEjeX=false;
-            }else if (controls.RotacionCuboEjeX) {
-                 cube.rotation.x += controls.rotationSpeed;
-                 controls.RotacionCuboEjeY=false;
+            // rotación del cubo alrededor del eje x
+            if (ejeCubo == "x") {
+                cube.rotation.x += controls.rotationSpeed;
+				cube.rotation.y = 0;
             }
-           
-           if (controls.RotacionTorusEjeY) {
-				torus.rotation.x = 0;
-                torus.rotation.y += controls.rotationSpeed;
-				torus.rotation.z = 0;
-                controls.RotacionTorusEjeX=false;
-            }else if (controls.RotacionTorusEjeX) {
-                 torus.rotation.x += controls.rotationSpeed;
-				 torus.rotation.y = 0;
-				 torus.rotation.z = 0;
-                 controls.RotacionTorusEjeY=false;
+			//rotacion del cubo alrededor del eje y
+			if (ejeCubo == "y") {
+                 cube.rotation.y += controls.rotationSpeed;
+				 cube.rotation.x = 0;
+            }
+           //rotacion del toroide alrededor del eje x
+           if (ejeToroide == "x") {
+				toroide.rotation.y = 0;
+                toroide.rotation.x += controls.rotationSpeed;
+				toroide.rotation.z = 0;
+            }
+			//rotacion del toroide alrededor del eje y
+			if (ejeToroide == "y") {
+                 toroide.rotation.y += controls.rotationSpeed;
+				 toroide.rotation.x = 0;
+				 toroide.rotation.z = 0;
             }
 
             //cambio del radio de la esfera
@@ -207,10 +253,10 @@
 			sphere.scale.y = controls.radioEsfera;
 			sphere.scale.z = controls.radioEsfera;
 
-            // bounce the sphere up and down
+            // bounce the sphere up and down and distance of bounce
             step+=controls.bouncingSpeed;
-            sphere.position.x = 20+( 10*(Math.cos(step)));
-            sphere.position.y = 2 +( 10*Math.abs(Math.sin(step)));
+            sphere.position.x = 10 +( 10*(Math.cos(step))*controls.distanciaRebote);
+            sphere.position.y = 2 +( 10*Math.abs(Math.sin(step))*controls.distanciaRebote);
 			
 			//rotacion de la pirámide
 			piramide.rotation.y += controls.rotationSpeed;
