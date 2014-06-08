@@ -59,14 +59,13 @@
           <h4>
           Contenido
           <br>
-          <small>Introducci&oacute;n a Tree.js<span class="caret"></span></small>
+          <small class="text-primary">Introducci&oacute;n a Tree.js<span class="caret"></span></small>
           </h4>
           </a>
           <div class="collapse" id="toggleDemo0" style="height: 0px;">
             <ul class="nav nav-list">
-              <li><a href="#">Resursos usados</a></li>
-              <li><a href="#">Fuentes</a></li>
-              <li><a href="#">Librer&iacute;as</a></li>
+              <li><a href="#" id="btn_recursos">Resursos usados</a></li>
+              <li><a href="#" id="btn_fuentes">Fuentes</a></li>
             </ul>
           </div>
         </li>
@@ -132,8 +131,60 @@
   </div>
   </div>
   <div class="col-sm-9 col-md-10 affix-content">
-    <div class="container" id="introduccion_0"> <!--Introduccion-->
-      
+      <div class="container" id="recursos"><!--recursos-->
+        <div class="page-header">
+          <h3><span class="glyphicon glyphicon-folder-open"></span> Recursos</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="list-group">
+              <a href="http://getbootstrap.com/" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">Bootstrap</span></h4>
+                <p class="list-group-item-text">Framework CSS responsive que ayuda al desarrollo
+                de aplicaciones web en lo que respecta front-end.</p>
+              </a>
+              <a href="http://threejs.org/" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">Three.js</span></h4>
+                <p class="list-group-item-text">Librer&iacute;a liviana escrita en javascript para 
+                crear graficos en 3D en un navegador web.</p>
+              </a>
+              <a href="http://jquery.com/" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">JQuery</span></h4>
+                <p class="list-group-item-text">Biblioteca javascript que nos permite de una manera
+                simplificada interactuar con el HTML.</p>
+              </a>
+              <a href="http://bootsnipp.com/snippets/featured" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">Bootsnipp</span></h4>
+                <p class="list-group-item-text">Es una bliblioteca de componentes HTML basados
+                en Bootstrap.</p>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="fuentes"><!--fuentes-->
+        <div class="page-header">
+          <h3><span class="glyphicon glyphicon-link"></span> Fuentes</h3>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="list-group">
+              <a href="http://www.jlabstudio.com/webgl/2013/03/three-js-tutorial-1-el-retorno-del-triangulo-y-el-cuadrado/" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">jlabstudio</span></h4>
+                
+              </a>
+              <a href="http://threejs.org/docs/index.html#Manual/Introduction/Creating_a_scene" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">Three.js</span></h4>
+                
+              </a>
+              <a href="http://www.genbetadev.com/javascript/introduccion-a-three-js-la-libreria-3d-numero-uno-para-html5" class="list-group-item" target="_blank">
+                <h4 class="list-group-item-heading"><span class="text-primary">genbetadev</span></h4>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container" id="introduccion_0"> <!--Introduccion-->
         <div class="page-header">
           <h3><span class="glyphicon glyphicon-th-list"></span> ¿Qu&eacute; es Three.js?</h3>
         </div>
@@ -428,9 +479,7 @@
     <script src="../src_tree/three.min.js"></script>
     <script type="text/javascript">
       $(function () {
-        
         presentacion();
-        
         $("#menu_lateral").hide();
         $("#menu_lateral").show("slow");
         init(0);
@@ -691,30 +740,42 @@
             ocultar_piramide();
             ocultar_esfera();
             ocultar_toroide();
+            ocultar_recursos();
           };
           if (opt==2) {//cubo
             ocultar_intro();
             ocultar_piramide();
             ocultar_esfera();
             ocultar_toroide();
+            ocultar_recursos();
           };
           if (opt==3) {//piramide
             ocultar_intro();
             ocultar_cubo();
             ocultar_esfera();
             ocultar_toroide();
+            ocultar_recursos();
           };
           if (opt==4) {//esfera
             ocultar_intro();
             ocultar_cubo();
             ocultar_piramide();
             ocultar_toroide();
+            ocultar_recursos();
           };
           if (opt==5) {//toroide
             ocultar_intro();
             ocultar_cubo();
             ocultar_piramide();
             ocultar_esfera();
+            ocultar_recursos();
+          };
+          if (opt==6) {//recursos
+            ocultar_intro();
+            ocultar_cubo();
+            ocultar_piramide();
+            ocultar_esfera();
+            ocultar_toroide();
           };
         }
         function ocultar_intro(){
@@ -729,6 +790,10 @@
         function ocultar_esfera(){
           $("#esfera_1").hide();
           $("#esfera_2").hide();
+        }
+        function ocultar_recursos(){
+          $("#recursos").hide();
+          $("#fuentes").hide();
         }
         function ocultar_piramide(){
           $("#piramide_1").hide();
@@ -745,6 +810,7 @@
           ocultar_piramide();
           ocultar_esfera();
           ocultar_toroide();
+          ocultar_recursos();
           $("#introduccion_0").show("slow");
           $( "#intro_btn1" ).click(function() {
             $("#introduccion_0").show("slow");
@@ -807,6 +873,17 @@
             $("#toroide_2").show("slow");
             $("#toroide_1").hide();
             ocultar_pages(5);
+          });
+
+          $( "#btn_recursos" ).click(function() {
+            $("#recursos").show("slow");
+            $("#fuentes").hide();
+            ocultar_pages(6);
+          });
+          $( "#btn_fuentes" ).click(function() {
+            $("#fuentes").show("slow");
+            $("#recursos").hide();
+            ocultar_pages(6);
           });
         }
       });
